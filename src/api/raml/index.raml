@@ -371,15 +371,29 @@ traits:
 /action:
   /comment:
     post:
-     
-    
+      description: Create a comment
+        body:
+          application/json:
+            example: |
+              {              
+                "author" : "Tony2017",
+                "date" : "2015.02.15",
+                "content":"le lampadaire à disparu lol !"
+              }
+        responses:
+          201:
+            body:
+              application/json:
+                example: |
+                  {
+                    "id": "1",                  
+                    "author" : "Tony2017",
+                    "date" : "2015.02.15",
+                    "content":"le lampadaire à disparu lol !"
+                  }
     /{commentId}:
       get:
-       
-      
       put:
-        
-      
       delete:
         
       
