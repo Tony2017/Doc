@@ -68,7 +68,7 @@ traits:
                 ]
               }
 
-  /{id}:
+  /{userId}:
     get:
       is: [auth: {roles: 'any'} ]
       description: Retrieve the details of a specific user.
@@ -121,6 +121,14 @@ traits:
         204:
           body:
 
+
+
+
+
+
+
+
+
 /data:
   description: Data resource.
   /populate:
@@ -129,3 +137,251 @@ traits:
       responses:
         200:
           body:
+
+
+
+
+
+
+
+
+
+
+/issue:
+  description: Issue resource.
+  get:
+    
+    description: Retrieve a list of issues
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "description": "Lampadaire mort",
+                  "status" : "created",
+                  "latitude": "46.7833",
+                  "longitude": "6.65"
+                },
+                {
+                  "id": "124",
+                  "author": "Tony2017",
+                  "responsable": "staff_member_one",
+                  "description": "Panneau casse",
+                  "status" : "resolved",
+                  "latitude": "46.7832",
+                  "longitude": "6.61"
+                },
+                ...
+              ]
+  post:
+    description: Create a new issue.
+    body:
+      application/json:
+        example: |
+          {
+            "author": "LL92",
+            "description": "Lampadaire mort",
+            "latitude": "46.7833",
+            "longitude": "6.65"   
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example: |
+              {
+                "id": "123",
+                "author": "LL92",
+                "responsable": "staff_member_one",
+                "description": "Lampadaire mort",
+                "status" : "created",
+                "latitude": "46.7833",
+                "longitude": "6.65"
+              }
+
+  /{issueId}:
+    get:
+      is: [auth: {roles: 'any'} ]
+      description: Retrieve an issue specified by its id
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "description": "Lampadaire mort",
+                  "status" : "pending",
+                  "latitude": "46.7833",
+                  "longitude": "6.65",
+                  "comment" : 
+                    [
+                      {
+                        "author" : "Tony2017",
+                        "date" : "2015.02.15",
+                        "content":"le lampadaire à disparu lol !"
+                      },
+                      {
+                        "author" : "LL92",
+                        "date" : "2015.02.15",
+                        "content":"YOLO la lampe"
+                      }
+                    ]
+                }
+    put:
+      is: [auth: {roles: 'staff'} ]
+      description: Update an issue specified by its id
+      body:
+        application/json:
+          example: |
+            {
+              "id": "123",
+              "author": "LL92",
+              "responsable": "staff_member_one",
+              "description": "Lampadaire mort",
+              "status" : "resolved",
+              "latitude": "46.7833",
+              "longitude": "6.65"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "description": "Lampadaire mort",
+                  "status" : "resolved",
+                  "latitude": "46.7833",
+                  "longitude": "6.65"
+                }
+    
+
+
+
+
+
+
+/issueType:
+    description: issueType ressource.
+    get:    
+      description: Retrieve a list of the type of issues
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                [
+                  {
+                    "id": "1",
+                    "name": "broken streetlight",
+                    "description": "Lampadaire hors fonction, ampoule defectueuse"
+                  },
+                  {
+                    "id": "2",
+                    "name": "dangerous crossroad",
+                    "description": "carrefour dangereux, mauvaise visibilité"
+                  },
+                  {
+                    "id": "3",
+                    "name": "graffiti",
+                    "description": "dommage sur des biens publics du à des graffitis"
+                  },
+                  ...
+                ]
+    post:
+      description: Create a type of issue
+      body:
+        application/json:
+          example: |
+            {              
+              "name": "broken streetlight",
+              "description": "Lampadaire hors fonction, ampoule defectueuse"
+            }
+      responses:
+        201:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "1",                  
+                  "name": "broken streetlight",
+                  "description": "Lampadaire hors fonction, ampoule defectueuse"
+                }
+    /{issueTypeId}:
+      get:
+        description: Retrieve a type of issue specified by its id
+        body:
+          application/json:
+            example: |
+              {
+                "id": "1",                  
+                "name": "broken streetlight",
+                "description": "Lampadaire hors fonction, ampoule defectueuse"
+              }
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "id": "1",                  
+                    "name": "broken streetlight",
+                    "description": "Lampadaire hors fonction, ampoule defectueuse"
+                  }
+      put:
+        description: Update a type of issue specified by its id
+        body:
+          application/json:
+            example: |
+              {
+                "id": "1",                  
+                "name": "broken streetlight",
+                "description": "Lampadaire hors fonction, ampoule defectueuse, raccordement HS"
+              }
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                    "id": "1",                  
+                    "name": "broken streetlight",
+                    "description": "Lampadaire hors fonction, ampoule defectueuse, raccordement HS"
+                  }
+      delete:
+        description: Delete a type of issue specified by its id
+        responses:
+          204:
+            body:
+
+
+
+
+
+/action:
+  /comment:
+    post:
+     
+    
+    /{commentId}:
+      get:
+       
+      
+      put:
+        
+      
+      delete:
+        
+      
+          
+  
