@@ -150,8 +150,36 @@ traits:
 /issue:
   description: Issue resource.
   get:
-    
     description: Retrieve a list of issues
+
+    queryParameters:
+      author:
+        type: string
+        description: An author's full name
+        example: LL92
+        required: true
+      issueType:
+        type: string
+        description: An issue's type
+        example: broken streetlight
+        required: true
+      status:
+        type: string
+        description: An issue's status
+        example: pending
+        required: true
+      latitude:
+        type: number
+        description: An issue's latitude
+        example: 46.7833
+        required: true
+      longitude:
+        type: number
+        description: An issue's longitude
+        example: 6.65
+        required: true
+
+
     responses:
       200:
         body:
@@ -162,6 +190,7 @@ traits:
                   "id": "123",
                   "author": "LL92",
                   "responsable": "staff_member_one",
+                  "issueType": "broken streetlight",
                   "description": "Lampadaire mort",
                   "status" : "created",
                   "latitude": "46.7833",
@@ -171,6 +200,7 @@ traits:
                   "id": "124",
                   "author": "Tony2017",
                   "responsable": "staff_member_one",
+                  "issueType": "broken roadsign",
                   "description": "Panneau casse",
                   "status" : "resolved",
                   "latitude": "46.7832",
@@ -184,10 +214,12 @@ traits:
       application/json:
         example: |
           {
-            "author": "LL92",
-            "description": "Lampadaire mort",
-            "latitude": "46.7833",
-            "longitude": "6.65"   
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "issueType": "broken streetlight",
+                  "description": "Lampadaire mort", 
+                  "latitude": "46.7833",
+                  "longitude": "6.65"
           }
     responses:
       201:
@@ -195,9 +227,10 @@ traits:
           application/json:
             example: |
               {
-                "id": "123",
+               "id": "123",
                 "author": "LL92",
                 "responsable": "staff_member_one",
+                "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
                 "status" : "created",
                 "latitude": "46.7833",
@@ -368,10 +401,13 @@ traits:
 
 
 
-/action:
-  /comment:
-    post:
-    /{commentId}:
-      get:
-      put:
-      delete:
+/action/comment:
+  post:
+  /{commentId}:
+    get:
+    put:
+    delete:
+  /{issueId}/statut:
+    put:
+  /{issueId}/responsable:
+    put:
