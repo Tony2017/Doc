@@ -1,5 +1,6 @@
 description: issueType ressource.
-get:    
+get:
+  is: [auth: {roles: 'any'} ] 
   description: Retrieve a list of the type of issues
   responses:
     200:
@@ -25,6 +26,7 @@ get:
               ...
             ]
 post:
+  is: [auth: {roles: 'staff'} ]
   description: Create a type of issue
   body:
     application/json:
@@ -45,6 +47,7 @@ post:
             }
 /{issueTypeId}:
   get:
+    is: [auth: {roles: 'any'} ]
     description: Retrieve a type of issue specified by its id
     body:
       application/json:
@@ -65,6 +68,7 @@ post:
                 "description": "Lampadaire hors fonction, ampoule defectueuse"
               }
   put:
+    is: [auth: {roles: 'staff'} ]
     description: Update a type of issue specified by its id
     body:
       application/json:
@@ -85,6 +89,7 @@ post:
                 "description": "Lampadaire hors fonction, ampoule defectueuse, raccordement HS"
               }
   delete:
+    is: [auth: {roles: 'staff'} ]
     description: Delete a type of issue specified by its id
     responses:
       204:

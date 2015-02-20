@@ -1,6 +1,7 @@
 description: Action ressource.
 /comment:
   post:
+    is: [auth: {roles: 'any'} ]
     description: Create a new comment.
     body:
       application/json:
@@ -24,11 +25,67 @@ description: Action ressource.
               }
   /{commentId}:
     get:
+      is: [auth: {roles: 'any'} ]
+      description: Retrieve an comment by its id
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "commentId": "7",
+                  "author": "tony2017",
+                  "type": "addComment",
+                  "date": "2015.02.15",
+                  "content": "le lampadaire à disparu lol !"
+                }
     put:
     delete:
 /issueStatut:
   /{issueId}:
     put:
+      is: [auth: {roles: 'staff'} ]
+      description: Update an status related to an issue by its id
+      body:
+        application/json:
+          example: |
+            {
+              "author": "tony2017",
+              "type": "upStatus",
+              "content": "resolved"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "author": "tony2017",
+                  "type": "upStatus",
+                  "date": "2015.02.15",
+                  "content": "resolved"
+                }
 /issueResponsable:
   /{issueId}:
     put:
+      is: [auth: {roles: 'staff'} ]
+      description: Update an responsable related to an issue by its id
+      body:
+        application/json:
+          example: |
+            {
+              "author": "tony2017",
+              "type": "upResponsable",
+              "content": "LL92"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "author": "tony2017",
+                  "type": "upResponsable",
+                  "date": "2015.02.15",
+                  "content": "LL92"
+                }

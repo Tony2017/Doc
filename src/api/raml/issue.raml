@@ -1,7 +1,7 @@
 description: Issue resource.
 get:
+  is: [auth: {roles: 'none'} ]
   description: Retrieve a list of issues
-
   queryParameters:
     author:
       type: string
@@ -57,6 +57,7 @@ get:
               ...
             ]
 post:
+  is: [auth: {roles: 'any'} ]
   description: Create a new issue.
   body:
     application/json:
@@ -118,7 +119,7 @@ post:
                   ]
               }
   put:
-    is: [auth: {roles: 'staff'} ]
+    is: [auth: {roles: 'any'} ]
     description: Update an issue specified by its id
     body:
       application/json:
