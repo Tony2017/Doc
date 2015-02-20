@@ -1,0 +1,91 @@
+description: issueType ressource.
+get:    
+  description: Retrieve a list of the type of issues
+  responses:
+    200:
+      body:
+        application/json:
+          example: |
+            [
+              {
+                "id": "1",
+                "name": "broken streetlight",
+                "description": "Lampadaire hors fonction, ampoule defectueuse"
+              },
+              {
+                "id": "2",
+                "name": "dangerous crossroad",
+                "description": "carrefour dangereux, mauvaise visibilité"
+              },
+              {
+                "id": "3",
+                "name": "graffiti",
+                "description": "dommage sur des biens publics du à des graffitis"
+              },
+              ...
+            ]
+post:
+  description: Create a type of issue
+  body:
+    application/json:
+      example: |
+        {              
+          "name": "broken streetlight",
+          "description": "Lampadaire hors fonction, ampoule defectueuse"
+        }
+  responses:
+    201:
+      body:
+        application/json:
+          example: |
+            {
+              "id": "1",                  
+              "name": "broken streetlight",
+              "description": "Lampadaire hors fonction, ampoule defectueuse"
+            }
+/{issueTypeId}:
+  get:
+    description: Retrieve a type of issue specified by its id
+    body:
+      application/json:
+        example: |
+          {
+            "id": "1",                  
+            "name": "broken streetlight",
+            "description": "Lampadaire hors fonction, ampoule defectueuse"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "id": "1",                  
+                "name": "broken streetlight",
+                "description": "Lampadaire hors fonction, ampoule defectueuse"
+              }
+  put:
+    description: Update a type of issue specified by its id
+    body:
+      application/json:
+        example: |
+          {
+            "id": "1",                  
+            "name": "broken streetlight",
+            "description": "Lampadaire hors fonction, ampoule defectueuse, raccordement HS"
+          }
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "id": "1",                  
+                "name": "broken streetlight",
+                "description": "Lampadaire hors fonction, ampoule defectueuse, raccordement HS"
+              }
+  delete:
+    description: Delete a type of issue specified by its id
+    responses:
+      204:
+        body:
