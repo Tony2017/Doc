@@ -1,5 +1,27 @@
+description: Action ressource.
 /comment:
   post:
+    description: Create a new comment.
+    body:
+      application/json:
+        example: |
+          {
+            "author": "tony2017",
+            "type": "addComment",
+            "content": "le lampadaire à disparu lol !"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example: |
+              {
+                "commentId": "7",
+                "author": "tony2017",
+                "type": "addComment",
+                "date": "2015.02.15",
+                "content": "le lampadaire à disparu lol !"
+              }
   /{commentId}:
     get:
     put:
