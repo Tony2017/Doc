@@ -16,7 +16,7 @@ take care of this issue to solve it.
 
 You will discover on this website the marvelous [API documentation](/api) and the [epic stories](/blog)
 
-This app is also deployed on heroku at this address : [https://immense-savannah-9613.herokuapp.com/](https://immense-savannah-9613.herokuapp.com/)
+This app is also deployed on heroku at this address : [https://obscure-retreat-6115.herokuapp.com/](https://obscure-retreat-6115.herokuapp.com/)
 
 
 
