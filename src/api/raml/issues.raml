@@ -59,8 +59,8 @@ get:
                 "status" : "created",
                 "latitude": "46.7833",
                 "longitude": "6.65",
-                "createdOn": "",
-                "updateOn" : "",
+                "createdOn": "2015/02/15",
+                "updateOn" : "2015/02/25",
                 "comment" : 
                   [
                     {
@@ -79,6 +79,11 @@ get:
               ...
               
             ]
+    404:
+      body:
+        application/json:
+          example: |
+            {"message": "Issue not found"}
 post:
   is: [auth: {roles: 'any'} ]
   description: Create a new issue.
@@ -86,12 +91,13 @@ post:
     application/json:
       example: |
         {
-                "author": "LL92",
-                "responsable": "staff_member_one",
-                "issueType": "broken streetlight",
-                "description": "Lampadaire mort", 
-                "latitude": "46.7833",
-                "longitude": "6.65"
+          "author": "LL92",
+          "responsable": "staff_member_one",
+          "issueType": "broken streetlight",
+          "description": "Lampadaire mort",
+          "tag":  ["lampadaire","ampoule"],
+          "latitude": "46.7833",
+          "longitude": "6.65"
         }
   responses:
     201:
@@ -99,20 +105,28 @@ post:
         application/json:
           example: |
             {
-             "id": "123",
+              "id": "123",
               "author": "LL92",
               "responsable": "staff_member_one",
               "issueType": "broken streetlight",
               "description": "Lampadaire mort",
+              "tag":  ["lampadaire","ampoule"],
               "status" : "created",
               "latitude": "46.7833",
-              "longitude": "6.65"
+              "longitude": "6.65",
+              "createdOn": "2015/02/15"
             }
 
 /{issueId}:
   get:
     is: [auth: {roles: 'any'} ]
     description: Retrieve an issue specified by its id
+    queryParameters:
+      id:
+        type: number
+        description: the issue id
+        example: 123
+        required: true
     responses:
       200:
         body:
@@ -124,9 +138,12 @@ post:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
-                "status" : "pending",
+                "tag":  ["lampadaire","ampoule"],
+                "status" : "created",
                 "latitude": "46.7833",
                 "longitude": "6.65",
+                "createdOn": "2015/02/15",
+                "updateOn" : "2015/02/25",
                 "comment" : 
                   [
                     {
@@ -141,6 +158,11 @@ post:
                     }
                   ]
               }
+      404:
+        body:
+          application/json:
+            example: |
+              {"message": "Issue not found"}
   put:
     is: [auth: {roles: 'any'} ]
     description: Update an issue specified by its id
@@ -153,12 +175,15 @@ post:
             "responsable": "staff_member_one",
             "issueType": "broken streetlight",
             "description": "Lampadaire mort",
+            "tag":  ["lampadaire","ampoule"],
             "status" : "resolved",
             "latitude": "46.7833",
-            "longitude": "6.65"
+            "longitude": "6.65",
+            "createdOn": "2015/02/15",
+            "updateOn" : "2015/02/25"
           }
     responses:
-      200:
+      201:
         body:
           application/json:
             example: |
@@ -168,7 +193,10 @@ post:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
+                "tag":  ["lampadaire","ampoule"],
                 "status" : "resolved",
                 "latitude": "46.7833",
-                "longitude": "6.65"
+                "longitude": "6.65",
+                "createdOn": "2015/02/15",
+                "updateOn" : "2015/02/25"
               }

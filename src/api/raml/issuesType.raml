@@ -1,7 +1,7 @@
 description: issueType ressource.
 get:
   is: [auth: {roles: 'any'} ] 
-  description: Retrieve a list of the type of issues
+  description: Retrieve a list of all the type of issues
   responses:
     200:
       body:
@@ -21,10 +21,15 @@ get:
               {
                 "id": "3",
                 "name": "graffiti",
-                "description": "dommage sur des biens publics du à des graffitis"
+                "description": "dommage sur des biens publics dû à des graffitis"
               },
               ...
             ]
+    404:
+      body:
+        application/json:
+          example: |
+            {"message": "IssueType not found"}
 post:
   is: [auth: {roles: 'staff'} ]
   description: Create a type of issue
@@ -49,14 +54,6 @@ post:
   get:
     is: [auth: {roles: 'any'} ]
     description: Retrieve a type of issue specified by its id
-    body:
-      application/json:
-        example: |
-          {
-            "id": "1",                  
-            "name": "broken streetlight",
-            "description": "Lampadaire hors fonction, ampoule defectueuse"
-          }
     responses:
       200:
         body:
@@ -67,6 +64,11 @@ post:
                 "name": "broken streetlight",
                 "description": "Lampadaire hors fonction, ampoule defectueuse"
               }
+      404:
+        body:
+          application/json:
+            example: |
+              {"message": "IssueType not found"}
   put:
     is: [auth: {roles: 'staff'} ]
     description: Update a type of issue specified by its id
