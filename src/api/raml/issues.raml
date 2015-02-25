@@ -8,6 +8,11 @@ get:
       description: An author's full name
       example: LL92
       required: true
+    responsable:
+      type: string
+      description: A responsable's full name
+      example: staff_member_one
+      required: false
     issueType:
       type: string
       description: An issue's type
@@ -28,6 +33,16 @@ get:
       description: An issue's longitude
       example: 6.65
       required: true
+    createdOn:
+      type: date
+      description: the date of the issue's creation
+      example: 2015/02/15
+      required: false
+    updateOn:
+      type: date
+      description: The date of the last update
+      example: 2015/02/25
+      required: false
   responses:
     200:
       body:
@@ -40,21 +55,29 @@ get:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
+                "tag":  ["lampadaire","ampoule"],
                 "status" : "created",
                 "latitude": "46.7833",
-                "longitude": "6.65"
+                "longitude": "6.65",
+                "createdOn": "",
+                "updateOn" : "",
+                "comment" : 
+                  [
+                    {
+                      "author" : "Tony2017",
+                      "date" : "2015.02.15",
+                      "content":"le lampadaire à disparu lol !"
+                    },
+                    {
+                      "author" : "LL92",
+                      "date" : "2015.02.15",
+                      "content":"YOLO la lampe"
+                    }
+                  ]
               },
-              {
-                "id": "124",
-                "author": "Tony2017",
-                "responsable": "staff_member_one",
-                "issueType": "broken roadsign",
-                "description": "Panneau casse",
-                "status" : "resolved",
-                "latitude": "46.7832",
-                "longitude": "6.61"
-              },
+              
               ...
+              
             ]
 post:
   is: [auth: {roles: 'any'} ]
