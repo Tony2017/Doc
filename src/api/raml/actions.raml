@@ -21,12 +21,13 @@ description: Action ressource.
                 "author": "tony2017",
                 "type": "addComment",
                 "date": "2015.02.15",
-                "content": "le lampadaire à disparu lol !"
+                "content": "le lampadaire à disparu lol !",
+                "issueId": "123"
               }
   /{commentId}:
     get:
       is: [auth: {roles: 'any'} ]
-      description: Retrieve a comment specidied by its id
+      description: Retrieve a comment specidied by its id --- est-ce utile ????!!!!
       responses:
         200:
           body:
@@ -37,8 +38,14 @@ description: Action ressource.
                   "author": "tony2017",
                   "type": "addComment",
                   "date": "2015.02.15",
-                  "content": "le lampadaire à disparu lol !"
+                  "content": "le lampadaire à disparu lol !",
+                  "issueId": "123"
                 }
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "Comment not found"}
     put:
       is: [auth: {roles: 'any'} ]
       description: Update a comment specified by its id
@@ -50,7 +57,8 @@ description: Action ressource.
               "author": "tony2017",
               "type": "addComment",
               "date": "2015.02.25",
-              "content": "le lampadaire est à nouveau fonctionnel, c'était rapide"
+              "content": "le lampadaire est à nouveau fonctionnel, c'était rapide",
+              "issueId": "123"
             }
       responses:
         200:
@@ -62,7 +70,8 @@ description: Action ressource.
                   "author": "tony2017",
                   "type": "addComment",
                   "date": "2015.02.25",
-                  "content": "le lampadaire est à nouveau fonctionnel, c'était rapide"
+                  "content": "le lampadaire est à nouveau fonctionnel, c'était rapide",
+                  "issueId": "123"
                 }
     delete:
       is: [auth: {roles: 'any'} ]
@@ -81,7 +90,8 @@ description: Action ressource.
             {
               "author": "tony2017",
               "type": "upStatus",
-              "content": "resolved"
+              "content": "resolved",
+              "issueId": "123"
             }
       responses:
         200:
@@ -92,7 +102,8 @@ description: Action ressource.
                   "author": "tony2017",
                   "type": "upStatus",
                   "date": "2015.02.15",
-                  "content": "resolved"
+                  "content": "resolved",
+                  "issueId": "123"
                 }
 /issuesResponsable:
   /{issueId}:
@@ -105,7 +116,8 @@ description: Action ressource.
             {
               "author": "tony2017",
               "type": "upResponsable",
-              "content": "LL92"
+              "content": "LL92",
+              "issueId": "123"
             }
       responses:
         200:
@@ -116,5 +128,6 @@ description: Action ressource.
                   "author": "tony2017",
                   "type": "upResponsable",
                   "date": "2015.02.15",
-                  "content": "LL92"
+                  "content": "LL92",
+                  "issueId": "123"
                 }
