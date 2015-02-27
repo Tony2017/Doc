@@ -9,7 +9,8 @@ description: Action ressource.
           {
             "author": "tony2017",
             "type": "addComment",
-            "content": "le lampadaire à disparu lol !"
+            "content": "le lampadaire à disparu lol !",
+            "issueId": "123"
           }
     responses:
       201:
@@ -25,27 +26,6 @@ description: Action ressource.
                 "issueId": "123"
               }
   /{commentId}:
-    get:
-      is: [auth: {roles: 'any'} ]
-      description: Retrieve a comment specidied by its id --- est-ce utile ????!!!!
-      responses:
-        200:
-          body:
-            application/json:
-              example: |
-                {
-                  "commentId": "7",
-                  "author": "tony2017",
-                  "type": "addComment",
-                  "date": "2015.02.15",
-                  "content": "le lampadaire à disparu lol !",
-                  "issueId": "123"
-                }
-        404:
-          body:
-            application/json:
-              example: |
-                {"message": "Comment not found"}
     put:
       is: [auth: {roles: 'any'} ]
       description: Update a comment specified by its id
