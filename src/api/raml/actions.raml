@@ -1,4 +1,41 @@
 description: Action ressource.
+get:
+  is: [auth: {roles: 'none'} ]
+  description: Retrieve a list of all the Actions
+  responses:
+    200:
+      body:
+        application/json:
+          example: |
+            [
+              {
+                "commentId": "7",
+                "author": "tony2017",
+                "type": "Create a new comment",
+                "date": "2015.02.15",
+                "content": "le lampadaire à disparu lol !",
+                "issueId": "123"
+              },
+              {
+                "author": "tony2017",
+                "type": "Change the issue status",
+                "date": "2015.02.15",
+                "content": "resolved",
+                "issueId": "123"
+              },
+              {
+                "author": "tony2017",
+                "type": "Change the issue responsable",
+                "date": "2015.02.15",
+                "content": "LL92",
+                "issueId": "123"
+              }   
+            ]
+    404:
+      body:
+        application/json:
+          example: |
+            {"message": "Actions not found"}
 /comments:
   post:
     is: [auth: {roles: 'any'} ]
@@ -8,7 +45,7 @@ description: Action ressource.
         example: |
           {
             "author": "tony2017",
-            "type": "addComment",
+            "type": "Create a new comment",
             "content": "le lampadaire à disparu lol !",
             "issueId": "123"
           }
@@ -20,7 +57,7 @@ description: Action ressource.
               {
                 "commentId": "7",
                 "author": "tony2017",
-                "type": "addComment",
+                "type": "Create a new comment",
                 "date": "2015.02.15",
                 "content": "le lampadaire à disparu lol !",
                 "issueId": "123"
@@ -35,7 +72,7 @@ description: Action ressource.
             {
               "commentId": "7",
               "author": "tony2017",
-              "type": "addComment",
+              "type": "Modify an existing comment",
               "date": "2015.02.25",
               "content": "le lampadaire est à nouveau fonctionnel, c'était rapide",
               "issueId": "123"
@@ -48,7 +85,7 @@ description: Action ressource.
                 {
                   "commentId": "7",
                   "author": "tony2017",
-                  "type": "addComment",
+                  "type": "Modify an existing comment",
                   "date": "2015.02.25",
                   "content": "le lampadaire est à nouveau fonctionnel, c'était rapide",
                   "issueId": "123"
@@ -56,6 +93,15 @@ description: Action ressource.
     delete:
       is: [auth: {roles: 'any'} ]
       description: Delete a specific comment.
+      body:
+        application/json:
+          example: |
+            {
+              "commentId": "7",
+              "author": "tony2017",
+              "type": "Remove an existing comment",
+              "issueId": "123"
+            }
       responses:
         204:
           body:
@@ -69,7 +115,7 @@ description: Action ressource.
           example: |
             {
               "author": "tony2017",
-              "type": "upStatus",
+              "type": "Change the issue status",
               "content": "resolved",
               "issueId": "123"
             }
@@ -80,7 +126,7 @@ description: Action ressource.
               example: |
                 {
                   "author": "tony2017",
-                  "type": "upStatus",
+                  "type": "Change the issue status",
                   "date": "2015.02.15",
                   "content": "resolved",
                   "issueId": "123"
@@ -95,7 +141,7 @@ description: Action ressource.
           example: |
             {
               "author": "tony2017",
-              "type": "upResponsable",
+              "type": "Change the issue responsable",
               "content": "LL92",
               "issueId": "123"
             }
@@ -106,7 +152,7 @@ description: Action ressource.
               example: |
                 {
                   "author": "tony2017",
-                  "type": "upResponsable",
+                  "type": "Change the issue responsable",
                   "date": "2015.02.15",
                   "content": "LL92",
                   "issueId": "123"
