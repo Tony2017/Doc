@@ -2,15 +2,25 @@ extends layout
 
 block body
 
-	div!=contents
+  div!=contents
 
-	for blogentry in collections.blogs
-		.panel.panel-default(class=blogentry.private?'panel-warning':'')
-			.panel-heading
-				h3.panel-title
-					unless blogentry.public
-						span.glyphicon.glyphicon-lock
-					=blogentry.title
-			.panel-body!=blogentry.contents
-			.panel-footer
-				a(href="#top").btn Back to top
+  for blogentry in collections.blogs
+    .panel.panel-default(class=blogentry.private?'panel-warning':'')
+      .panel-heading
+        h3(id=blogentry.title).panel-title
+          unless blogentry.public
+            span.glyphicon.glyphicon-lock
+          =blogentry.title
+      .panel-body!=blogentry.contents
+      .panel-footer
+        a(href="#top").btn Back to top
+            
+append menu
+  h1 Posts
+  hr
+
+  ul.nav.subnav
+    li
+      for blogentry in collections.blogs
+        
+            a(href="##{blogentry.title}") #{blogentry.title}

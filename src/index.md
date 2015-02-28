@@ -9,7 +9,7 @@ menuIndex: 1
 ## Citizen Engagement
 
 
-<img src="we-need-you.png" class="wny"/>
+<img src="we-need-you.png" class="centered_img"/>
 
 Welcome on board! You are about to discover the wonderful world where people are participating
 in the city life everyday.
