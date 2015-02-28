@@ -45,7 +45,6 @@ get:
         example: |
           {
             "author": "tony2017",
-            "type": "Create a new comment",
             "content": "le lampadaire à disparu lol !",
             "issueId": "123"
           }
@@ -62,7 +61,7 @@ get:
                 "content": "le lampadaire à disparu lol !",
                 "issueId": "123"
               }
-  /{commentId}:
+  /{issueId}:
     put:
       is: [auth: {roles: 'any'} ]
       description: Update a comment specified by its id
@@ -72,7 +71,6 @@ get:
             {
               "commentId": "7",
               "author": "tony2017",
-              "type": "Modify an existing comment",
               "date": "2015.02.25",
               "content": "le lampadaire est à nouveau fonctionnel, c'était rapide",
               "issueId": "123"
@@ -105,7 +103,7 @@ get:
       responses:
         204:
           body:
-/issuesStatut:
+/statut:
   /{issueId}:
     put:
       is: [auth: {roles: 'staff'} ]
@@ -115,7 +113,6 @@ get:
           example: |
             {
               "author": "tony2017",
-              "type": "Change the issue status",
               "content": "resolved",
               "issueId": "123"
             }
@@ -131,7 +128,7 @@ get:
                   "content": "resolved",
                   "issueId": "123"
                 }
-/issuesResponsable:
+/responsable:
   /{issueId}:
     put:
       is: [auth: {roles: 'staff'} ]
@@ -141,7 +138,6 @@ get:
           example: |
             {
               "author": "tony2017",
-              "type": "Change the issue responsable",
               "content": "LL92",
               "issueId": "123"
             }
