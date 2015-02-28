@@ -11,7 +11,9 @@ block body
           unless blogentry.public
             span.glyphicon.glyphicon-lock
           =blogentry.title
-      .panel-body!=blogentry.contents
+      .panel-body
+        !=blogentry.contents 
+        p(class="author") By #{blogentry.author}
       .panel-footer
         a(href="#top").btn Back to top
             

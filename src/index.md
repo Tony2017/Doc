@@ -23,6 +23,8 @@ So, join us right now and take part in the improvement of our city.
 
 This API Doc is also deployed on heroku at this address : [https://obscure-retreat-6115.herokuapp.com/](https://obscure-retreat-6115.herokuapp.com/)
 
+The API is deployed on [https://heigvd-express.herokuapp.com/](https://heigvd-express.herokuapp.com/)
+
 
 
 

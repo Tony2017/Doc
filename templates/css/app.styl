@@ -1,3 +1,6 @@
+$color1 = #34495e
+$color2 = #2c3e50
+
 html
   position relative
   min-height 100%
@@ -22,7 +25,8 @@ th, td
   padding 5px 15px
 
 th
-  background-color #eee
+  background-color $color1
+  color #ffffff
 
 div > p > img
   width 100%
@@ -106,7 +110,7 @@ span.glyphicon.glyphicon-lock
   padding-top 6px
 
   color #ffffff
-  background-color #34495e
+  background-color $color1
   border-top 1px solid #e7e7e7
 
   text-align center
@@ -116,24 +120,27 @@ span.glyphicon.glyphicon-lock
 /* navbar styling */
 
 .navbar-default
-  background-color #34495e
+  background-color $color1
   border-color #e7e7e7
   
 .navbar-default .navbar-nav > li > a:hover
   color #bdc3c7
   
 .navbar-default .navbar-nav > .active > a
-  background-color #2c3e50
+  background-color $color2
   color #ffffff
   
- .navbar-default .navbar-nav > .active > a:hover
-   background-color #2c3e50
+ .navbar-default .navbar-nav > .active > a:hover, .navbar-default  > a:hover
+   background-color $color2
    color #bdc3c7
    
  
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand 
   color #ffffff
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+  color #bdc3c7
 
 .wny
   height 381px
@@ -142,7 +149,37 @@ span.glyphicon.glyphicon-lock
 .centered_img
   height inherit
   width inherit
+  max-width 100%
   display block
   margin-left auto
   margin-right auto
   
+.author
+  text-align right
+  font-style italic
+
+//blog colors
+
+.panel-default > .panel-heading
+  background-color $color1
+  color #ffffff
+
+//flat style for round corner
+
+.panel, .panel-body, .modal-content, .panel panel-default, .list-group-item:first-child, .list-group-item:last-child, pre, .nav-tabs > li > a, .btn
+  border-radius 0px
+  
+.panel-heading, .panel-footer
+  border-top-left-radius 0px
+  border-top-right-radius 0px
+  border-bottom-left-radius 0px
+  border-bottom-right-radius 0px
+  
+.modal-header 
+    background-color $color1
+    color #ffffff
+    
+.close 
+    color #ffffff
+    opacity inherit
+    text-shadow 0 1px 0 #000
