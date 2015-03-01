@@ -55,7 +55,7 @@ get:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
-                "tag":  ["lampadaire","ampoule"],
+                "tags":  ["lampadaire","ampoule"],
                 "status" : "created",
                 "latitude": "46.7833",
                 "longitude": "6.65",
@@ -95,7 +95,7 @@ post:
           "responsable": "staff_member_one",
           "issueType": "broken streetlight",
           "description": "Lampadaire mort",
-          "tag":  ["lampadaire","ampoule"],
+          "tags":  ["lampadaire","ampoule"],
           "latitude": "46.7833",
           "longitude": "6.65"
         }
@@ -110,7 +110,7 @@ post:
               "responsable": "staff_member_one",
               "issueType": "broken streetlight",
               "description": "Lampadaire mort",
-              "tag":  ["lampadaire","ampoule"],
+              "tags":  ["lampadaire","ampoule"],
               "status" : "created",
               "latitude": "46.7833",
               "longitude": "6.65",
@@ -138,7 +138,7 @@ post:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
-                "tag":  ["lampadaire","ampoule"],
+                "tags":  ["lampadaire","ampoule"],
                 "status" : "created",
                 "latitude": "46.7833",
                 "longitude": "6.65",
@@ -175,7 +175,7 @@ post:
             "responsable": "staff_member_one",
             "issueType": "broken streetlight",
             "description": "Lampadaire mort",
-            "tag":  ["lampadaire","ampoule"],
+            "tags":  ["lampadaire","ampoule"],
             "status" : "resolved",
             "latitude": "46.7833",
             "longitude": "6.65",
@@ -193,10 +193,17 @@ post:
                 "responsable": "staff_member_one",
                 "issueType": "broken streetlight",
                 "description": "Lampadaire mort",
-                "tag":  ["lampadaire","ampoule"],
+                "tags":  ["lampadaire","ampoule"],
                 "status" : "resolved",
                 "latitude": "46.7833",
                 "longitude": "6.65",
                 "createdOn": "2015/02/15",
                 "updateOn" : "2015/02/25"
               }
+  /tags:
+    post:
+      description: Create a new tag
+    put:
+      description: Update a tag based on a issueId
+    delete:
+      description: Delete a tag
