@@ -1,17 +1,38 @@
-$color1 = #34495e
-$color2 = #2c3e50
+$color1 = #34495e //light
+$color2 = #2c3e50 //dark
+
+$grey1 = #161616 //darker grey
+$grey2 = #262626 //middle grey
+$grey3 = #3a3a3a //lighter grey
+
+$deepBlue = #193754 //deep blue
+$lightBlue = #3399cc
+
+$textBlue = #4894b3 //text color blue
+$textWhite = #cfcfcf //text color white title
+$text = #a8a8a8 // plain text
+$textGrey = #6f6f6f //text color grey unselected
 
 html
   position relative
   min-height 100%
 
 body
+  background-color $grey1
+  color $text
   padding 0
   margin-bottom 60px
   
 
-a:hover
+a:hover, a:focus
   text-decoration underline
+  outline 0
+
+a 
+  color $lightBlue
+  text-decoration none
+  outline 0
+
 
 p
   line-height 24px
@@ -25,7 +46,7 @@ th, td
   padding 5px 15px
 
 th
-  background-color $color1
+  background-color $grey2
   color #ffffff
 
 div > p > img
@@ -109,9 +130,9 @@ span.glyphicon.glyphicon-lock
   height 60px
   padding-top 6px
 
-  color #ffffff
-  background-color $color1
-  border-top 1px solid #e7e7e7
+  
+  background-color $grey2
+  border-top 1px solid $grey2
 
   text-align center
   p
@@ -120,24 +141,24 @@ span.glyphicon.glyphicon-lock
 /* navbar styling */
 
 .navbar-default
-  background-color $color1
-  border-color #e7e7e7
+  background-color $grey2
+  border-color $grey2
   
 .navbar-default .navbar-nav > li > a:hover
   color #bdc3c7
   
 .navbar-default .navbar-nav > .active > a
-  background-color $color2
-  color #ffffff
+  background-color $deepBlue
+  color $textWhite
   
  .navbar-default .navbar-nav > .active > a:hover, .navbar-default  > a:hover
-   background-color $color2
+   background-color $deepBlue
    color #bdc3c7
    
  
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand 
-  color #ffffff
+  color $textWhite
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
   color #bdc3c7
@@ -161,9 +182,16 @@ span.glyphicon.glyphicon-lock
 //blog colors
 
 .panel-default > .panel-heading
-  background-color $color1
-  color #ffffff
+  background-color $grey2
+  border-color $grey2
+  color $textWhite
 
+.panel-default
+  border-color $grey2
+
+.panel-body
+  background-color $grey1
+  
 //flat style for round corner
 
 .panel, .panel-body, .modal-content, .panel panel-default, .list-group-item:first-child, .list-group-item:last-child, pre, .nav-tabs > li > a, .btn
@@ -174,12 +202,58 @@ span.glyphicon.glyphicon-lock
   border-top-right-radius 0px
   border-bottom-left-radius 0px
   border-bottom-right-radius 0px
-  
+  background-color $grey2
+  border-color $grey2
+
+// API reference
+
+.modal-body
+  background-color $grey1
+
 .modal-header 
-    background-color $color1
-    color #ffffff
+  background-color $grey2
+  color $textWhite
+  border-bottom 0px solid
     
 .close 
-    color #ffffff
-    opacity inherit
-    text-shadow 0 1px 0 #000
+  color $textWhite
+  opacity inherit
+  text-shadow 0 1px 0 #000
+
+.close:hover
+  color $grey1
+h1, h2, h3
+  color $textWhite
+
+
+
+hr
+  border 0
+  height 1px
+  background $deepBlue
+  background-image -webkit-linear-gradient(left, $grey1, $deepBlue, $grey1)
+  background-image -moz-linear-gradient(left, $grey1, $deepBlue, $grey1)
+  background-image -ms-linear-gradient(left, $grey1, $deepBlue, $grey1)
+  background-image -o-linear-gradient(left, $grey1, $deepBlue, $grey1)
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+  -moz-border-bottom-colors none
+  -moz-border-left-colors none
+  -moz-border-right-colors none
+  -moz-border-top-colors none
+  background-color $grey1
+  border-color $grey2 $grey2 transparent
+  border-image none
+  border-style solid
+  border-width 1px
+  color $textGrey
+  cursor default
+  outline 0
+
+.nav-tabs
+  border-bottom 1px solid $grey2
+
+.nav > li > a:hover
+  background-color $deepBlue
+  border-color $grey2
+  color $textWhite
