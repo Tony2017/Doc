@@ -203,7 +203,99 @@ post:
   /tags:
     post:
       description: Create a new tag
+      body:
+        application/json:
+        example: |
+          {
+            "keyword": "tag"
+          }
+      responses:
+        201:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "issueType": "broken streetlight",
+                  "description": "Lampadaire mort",
+                  "tags":  
+                    [
+                      {
+                        "id": "abc",
+                        "keyword": "¨tag"
+                      }
+                    ],
+                  "status" : "resolved",
+                  "latitude": "46.7833",
+                  "longitude": "6.65",
+                  "createdOn": "2015/02/15",
+                  "updateOn" : "2015/02/25"
+                }
     put:
       description: Update a tag based on a issueId
+      body:
+        application/json:
+        example: |
+          {
+            "tagId": "abc",
+            "keyword": "new tag"
+          }
+      responses:
+        201:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "issueType": "broken streetlight",
+                  "description": "Lampadaire mort",
+                  "tags":  
+                    [
+                      {
+                        "id": "abc",
+                        "keyword": "new tag"
+                      }
+                    ],
+                  "status" : "resolved",
+                  "latitude": "46.7833",
+                  "longitude": "6.65",
+                  "createdOn": "2015/02/15",
+                  "updateOn" : "2015/02/25"
+                }
     delete:
       description: Delete a tag
+      body:
+        application/json:
+        example: |
+          {
+            "tagId": "abc",
+            "keyword": "new tag"
+          }
+      responses:
+        201:
+          body:
+            application/json:
+              example: |
+                {
+                  "id": "123",
+                  "author": "LL92",
+                  "responsable": "staff_member_one",
+                  "issueType": "broken streetlight",
+                  "description": "Lampadaire mort",
+                  "tags":  
+                    [
+                      {
+                        "id": "abc",
+                        "keyword": ""
+                      }
+                    ],
+                  "status" : "resolved",
+                  "latitude": "46.7833",
+                  "longitude": "6.65",
+                  "createdOn": "2015/02/15",
+                  "updateOn" : "2015/02/25"
+                }
